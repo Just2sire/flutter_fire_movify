@@ -1,0 +1,10 @@
+export "app_shell.dart";
+export "edit_profile_page.dart";
+export "error_page.dart";
+export "favorites_page.dart" hide MovieItem;
+export "home_page.dart" hide MovieItem;
+export "movie_detail_page.dart";
+export "movies_page.dart";
+export "profile_page.dart";
+export "watchlist_page.dart";
+export "welcome_page.dart";
