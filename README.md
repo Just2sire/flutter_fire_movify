@@ -103,4 +103,4 @@ flutter run
 
 ## 📝 Licence
 
-Projet réalisé dans le cadre d'un apprentissage Flutter. Utilisation et modification libres.
+Projet réalisé dans le cadre de la formation [FlutterFire](flutterfiresummer.africa) avec les cours et exercies de [NextFlutter](https://nextflutter.com). Utilisation et modification libres.
