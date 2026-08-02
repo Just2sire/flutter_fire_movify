@@ -1,6 +1,6 @@
 # 🎬 Movify — Application de Découverte & Gestion de Films
 
-**Movify** est une application mobile d'exception développée avec **Flutter** et axée sur une expérience utilisateur fluide, un design moderne et une architecture solide (**Clean Architecture**). Elle permet de parcourir un vaste catalogue de films, d'examiner en détail leurs caractéristiques (synopsis, note, durée, genres, casting, bandes-annonces), et d'organiser ses listes personnelles (favoris, films à voir / *Watchlist*), le tout soutenu par un mode Sombre / Clair dynamique.
+**Movify** est une application mobile et tablette d'exception développée avec **Flutter**, axée sur une expérience utilisateur fluide, un design moderne et une architecture solide (**Clean Architecture**). Elle permet de parcourir un vaste catalogue de films, d'examiner en détail leurs caractéristiques (synopsis, note, durée, genres, casting, bandes-annonces), et d'organiser ses listes personnelles (favoris, films à voir / *Watchlist*), le tout soutenu par une réactivité responsive adaptative (Mobile & Tablette) et un mode Sombre / Clair dynamique.
 
 ---
 
@@ -15,11 +15,43 @@
 ## ✨ Fonctionnalités Clés
 
 - 🎬 **Exploration de Films** : Bandes-annonces, films à l'affiche, nouveautés et recommandations populaires.
+- 📐 **Adaptabilité Responsive (Mobile & Tablette)** : Adaptation parfaite des grilles, cartes et mises en page sur smartphone, tablette et bureau grâce aux extensions de contexte (`context.isMobile`, `context.isTablet`, `context.isDesktop`).
 - 🔍 **Recherche & Filtrage Avancé** : Recherche textuelle instantanée et modal de filtres multicritères (genres, année de sortie, note minimale, tri).
 - ❤️ **Gestion des Favoris** : Sauvegarde instantanée des films coups de cœur avec persistance locale (`shared_preferences`).
 - 📌 **Watchlist Personnalisée** : Suivi des films à regarder et statut de visionnage.
 - 🌗 **Thème Sombre & Clair** : Toggle dynamique du thème global respectant la charte graphique de l'application.
 - 📱 **Navigation Immersive** : Shell Bottom Navigation Bar fluide et routage propre avec `go_router`.
+
+---
+
+## 📐 Responsive Design & Extensions de Contexte (`BuildContextExtensions`)
+
+L'un des points forts de Movify est son adaptabilité poussée aux différentes tailles d'écran. Grâce à l'extension [build_context_extensions.dart](file:///C:/Users/Desire/Documents/FORMATION/FlutterFire/FLUTTER/movify/lib/core/extensions/build_context_extensions.dart) sur `BuildContext`, les widgets adaptent automatiquement leur affichage en fonction du type d'appareil et de son orientation.
+
+### 🔌 Accès Direct & Propriétés Responsive
+
+```dart
+// Exemples d'utilisation dans les widgets :
+if (context.isMobile) {
+  // Disposition sous forme de liste verticale pour mobile (< 600px)
+} else if (context.isTablet) {
+  // Disposition sous forme de grille 3 colonnes pour tablette (600px - 1200px)
+} else if (context.isDesktop) {
+  // Disposition élargie multi-panneaux pour bureau (>= 1200px)
+}
+```
+
+### 🛠️ Résumé des Helpers `BuildContext`
+
+| Propriété / Méthode | Type de retour | Description & Rôle |
+| :--- | :--- | :--- |
+| `context.isMobile` | `bool` | Détecte si la largeur de l'écran est `< 600px` (Smartphones). |
+| `context.isTablet` | `bool` | Détecte si la largeur est comprise entre `600px` et `1200px` (Tablettes). |
+| `context.isDesktop` | `bool` | Détecte si la largeur est `>= 1200px` (Grands écrans / Desktop). |
+| `context.isPortrait` / `isLandscape` | `bool` | Détecte l'orientation de l'appareil (Portrait ou Paysage). |
+| `context.screenWidth` / `screenHeight` | `double` | Accès rapide aux dimensions globales du viewport. |
+| `context.theme` / `colorScheme` | `ThemeData` | Accès direct au thème actif et à la palette de couleurs sans lourdeur syntaxique. |
+| `context.showSnackBar()` / `showError()` | `void` | Affichage simplifié de notifications et messages de confirmation. |
 
 ---
 
@@ -45,7 +77,7 @@ movify/
 │   │   │   ├── app_assets.dart            # Raccourcis des chemins d'assets
 │   │   │   └── app_keys.dart              # Clés globales de configuration
 │   │   ├── extensions/
-│   │   │   ├── build_context_extensions.dart # Raccourcis de thème, mediaquery et navigation sur Context
+│   │   │   ├── build_context_extensions.dart # Extensions UI, thème, navigation & responsive (isMobile, isTablet)
 │   │   │   ├── color_extension.dart       # Utilitaires de manipulation de couleurs
 │   │   │   ├── int_extensions.dart        # Formateurs de durées (minutes -> heures/minutes)
 │   │   │   ├── navigation_extensions.dart # Extensions de navigation déclarative
@@ -147,7 +179,7 @@ movify/
 - **Caractéristiques** :
   - Champ de recherche textuel réactif.
   - Bouton d'ouverture du modal de filtres `FiltersBottomSheet`.
-  - Grille/Liste dynamique affichant le poster, le titre, la note, la durée et les genres de chaque film.
+  - Grille/Liste dynamique réactive aux breakpoints (`context.isMobile` / `context.isTablet`) affichant le poster, le titre, la note, la durée et les genres.
 
 ### 5. 🔍 `MovieDetailPage` (`movie_detail_page.dart`)
 - **Rôle** : Fiche technique et artistique complète d'un film sélectionné.
