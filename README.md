@@ -299,7 +299,7 @@ L'injection de dépendances est gérée de manière légère et performante via 
 
 ### 2. Récupération du Projet
 ```bash
-git clone https://github.com/votre-username/movify.git
+git clone https://github.com/Just2sire/flutter_fire_movify.git
 cd movify
 ```
 
@@ -309,7 +309,7 @@ flutter pub get
 ```
 
 ### 4. Lancement
-- **Sur Émulateur Android / Simulateur iOS** :
+- **Sur Émulateur Android** :
   ```bash
   flutter run
   ```

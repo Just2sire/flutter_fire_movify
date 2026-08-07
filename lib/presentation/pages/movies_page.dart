@@ -185,42 +185,6 @@ class _MoviesPageState extends State<MoviesPage> {
                   ),
                 ),
               ),
-              // Stack(
-              //   children: [
-              //     IconButton(
-              //       style: IconButton.styleFrom(
-              //         padding: AppSpacing.insetLg,
-              //         shape: const RoundedRectangleBorder(
-              //           borderRadius: AppSpacing.roundedLg,
-              //         ),
-              //         backgroundColor: _hasActiveFilters
-              //             ? colorScheme.primary
-              //             : colorScheme.primaryContainer,
-              //       ),
-              //       onPressed: () => unawaited(_openFilters()),
-              //       icon: Icon(
-              //         LucideIcons.filter,
-              //         color: _hasActiveFilters
-              //             ? colorScheme.onPrimary
-              //             : colorScheme.onPrimaryContainer,
-              //         size: AppSpacing.iconLg,
-              //       ),
-              //     ),
-              //     if (_hasActiveFilters)
-              //       Positioned(
-              //         top: 4,
-              //         right: 4,
-              //         child: Container(
-              //           width: 10,
-              //           height: 10,
-              //           decoration: BoxDecoration(
-              //             color: colorScheme.tertiary,
-              //             shape: BoxShape.circle,
-              //           ),
-              //         ),
-              //       ),
-              //   ],
-              // ),
             ],
           ),
           if (_hasActiveFilters || hasQuery) ...[
