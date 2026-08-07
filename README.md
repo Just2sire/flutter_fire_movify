@@ -2,6 +2,29 @@
 
 **Movify** est une application mobile et tablette d'exception développée avec **Flutter**, axée sur une expérience utilisateur fluide, un design moderne et une architecture solide (**Clean Architecture**). Elle permet de parcourir un vaste catalogue de films, d'examiner en détail leurs caractéristiques (synopsis, note, durée, genres, casting, bandes-annonces), et d'organiser ses listes personnelles (favoris, films à voir / *Watchlist*), le tout soutenu par une réactivité responsive adaptative (Mobile & Tablette) et un mode Sombre / Clair dynamique.
 
+[![Tests Status](https://img.shields.io/badge/Tests-100%25%20Passing%20(15/15)-brightgreen)](file:///C:/Users/Desire/Documents/FORMATION/FlutterFire/FLUTTER/movify/test)
+[![Flutter Version](https://img.shields.io/badge/Flutter-%3E%3D3.14.0-blue)](https://flutter.dev)
+[![Architecture](https://img.shields.io/badge/Architecture-Clean%20Architecture-orange)](#-architecture--injection-de-dépendances)
+
+---
+
+## 🧪 Suite de Tests Unitaires & Widget (100% Validés)
+
+Le projet intègre une suite rigoureuse de **tests automatisés** couvrant à la fois la couche domaine, la couche de données (parsing/sérialisation), les composants UI réutilisables du Design System et la validation des formulaires.
+
+### 📊 Découpage des Tests (`test/`)
+- 🟢 **`test/unit/duration_formatter_test.dart`** : Tests unitaires de l'extension de formattage des durées (0min, minutes seules, heures exactes, complétion avec zéros).
+- 🟢 **`test/unit/movie_model_test.dart`** : Tests unitaires du modèle `MovieModel` (parsing JSON `fromMap`, conversion `toEntity`, sérialisation `toMap`).
+- 🟢 **`test/widget/app_buttons_test.dart`** : Tests de widgets UI pour `AppElevatedButton` et `AppOutlinedButton` (rendu texte, déclenchement `onPressed`, état de chargement `isLoading`).
+- 🟢 **`test/widget/app_text_form_field_test.dart`** : Tests de widgets UI pour `AppTextFormField` (saisie de texte, gestion des labels, validation automatique `isRequired`).
+- 🟢 **`test/widget/edit_profile_page_test.dart`** : Test d'intégration de l'écran d'édition de profil ([`EditProfilePage`](file:///C:/Users/Desire/Documents/FORMATION/FlutterFire/FLUTTER/movify/lib/presentation/pages/edit_profile_page.dart)) vérifiant la présence des **3 champs de formulaire** et l'exécution de la validation.
+- 🟢 **`test/widget_test.dart`** : Test du composant réutilisable [`AppTopbar`](file:///C:/Users/Desire/Documents/FORMATION/FlutterFire/FLUTTER/movify/lib/presentation/widgets/app_topbar.dart).
+
+```bash
+# Pour exécuter tous les tests :
+flutter test
+```
+
 ---
 
 ## 📱 Captures d'écran & Aperçu Visuel
@@ -14,6 +37,8 @@
 
 ## ✨ Fonctionnalités Clés
 
+- 🧪 **Suite de Tests Complète** : 15 tests unitaires et de widgets garantissant la qualité et la stabilité du code.
+- 📝 **Formulaire de Validation à 3 Champs** : Formulaire dynamique avec validation stricte dans `ProfilePage` et `EditProfilePage` (*Nom complet* [min 3 lettres], *Adresse email* [regex RFC], *Téléphone* [regex min 8 chiffres]).
 - 🎬 **Exploration de Films** : Bandes-annonces, films à l'affiche, nouveautés et recommandations populaires.
 - 📐 **Adaptabilité Responsive (Mobile & Tablette)** : Adaptation parfaite des grilles, cartes et mises en page sur smartphone, tablette et bureau grâce aux extensions de contexte (`context.isMobile`, `context.isTablet`, `context.isDesktop`).
 - 🔍 **Recherche & Filtrage Avancé** : Recherche textuelle instantanée et modal de filtres multicritères (genres, année de sortie, note minimale, tri).
