@@ -5,9 +5,13 @@ import "package:movify/presentation/providers/app_dependencies.dart";
 import "core/routing/router.dart";
 import "core/theme/app_theme.dart";
 
+/// Point d'entrée principal de l'application Movify.
+/// Initialise la persistance locale du thème (Thème Clair / Thème Sombre),
+/// configure l'injection de dépendances (`AppDependencies`) et lance `MyApp`.
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  // Chargement du thème sauvegardé localement via SharedPreferences
   const themeRepo = ThemeRepositoryImpl();
   final initialThemeMode = await themeRepo.getThemeMode();
   final themeModeNotifier = ValueNotifier<ThemeMode>(initialThemeMode);
@@ -25,6 +29,8 @@ void main() async {
   );
 }
 
+/// Widget racine de l'application gérant la réactivité du thème (Clair / Sombre)
+/// et la navigation déclarative basée sur `go_router`.
 class MyApp extends StatelessWidget {
   const MyApp({required this.themeModeNotifier, super.key});
 
@@ -36,10 +42,15 @@ class MyApp extends StatelessWidget {
       valueListenable: themeModeNotifier,
       builder: (context, currentMode, _) {
         return MaterialApp.router(
+          title: "Movify - Catalogue de Films",
           debugShowCheckedModeBanner: false,
+
+          // Configuration obligatoire du thème Clair et Sombre
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: currentMode,
+
+          // Navigation déclarative via GoRouter
           routerConfig: appRouter,
         );
       },
