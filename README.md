@@ -308,7 +308,12 @@ cd movify
 flutter pub get
 ```
 
-### 4. Lancement
+### 4. Exécution des Tests Unitaires & Widgets
+```bash
+flutter test
+```
+
+### 5. Lancement de l'Application
 - **Sur Émulateur Android** :
   ```bash
   flutter run
