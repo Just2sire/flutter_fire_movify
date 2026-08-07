@@ -5,7 +5,12 @@ import "package:movify/core/extensions/navigation_extensions.dart";
 import "package:movify/core/theme/app_spacing.dart";
 import "package:movify/domain/entities/index.dart";
 import "package:movify/presentation/widgets/index.dart"
-    show AppElevatedButton, AppOutlinedButton, AppScaffold, AppTextFormField, AppTopbar;
+    show
+        AppElevatedButton,
+        AppOutlinedButton,
+        AppScaffold,
+        AppTextFormField,
+        AppTopbar;
 
 import "../providers/app_dependencies.dart";
 
@@ -79,7 +84,9 @@ class _ProfilePageState extends State<ProfilePage> {
     final colorScheme = context.colorScheme;
     final textTheme = context.textTheme;
 
-    final initial = user.username.isNotEmpty ? user.username[0].toUpperCase() : "U";
+    final initial = user.username.isNotEmpty
+        ? user.username[0].toUpperCase()
+        : "U";
 
     return AppScaffold(
       resizeToAvoidBottomInset: true,
@@ -139,14 +146,32 @@ class _ProfilePageState extends State<ProfilePage> {
                         color: colorScheme.onSurfaceVariant,
                       ),
                     ),
-                    AppSpacing.gapVLg,
+                    Card(
+                      margin: const EdgeInsets.only(bottom: AppSpacing.md),
+                      child: SwitchListTile(
+                        title: const Text("Mode Sombre"),
+                        subtitle: const Text("Basculer le thème global et sauvegarder"),
+                        secondary: Icon(
+                          context.isDarkMode ? LucideIcons.moon : LucideIcons.sun,
+                          color: colorScheme.primary,
+                        ),
+                        value: context.isDarkMode,
+                        onChanged: (bool value) async {
+                          final deps = AppDependencies.of(context);
+                          final newMode = value ? ThemeMode.dark : ThemeMode.light;
+                          await deps.themeRepository.saveThemeMode(newMode);
+                          deps.themeModeNotifier.value = newMode;
+                          if (mounted) setState(() {});
+                        },
+                      ),
+                    ),
 
                     Row(
                       children: [
                         Expanded(
                           child: AppOutlinedButton(
                             onPressed: () async {
-                              await context.push("/profile/edit");
+                              context.pushToEditProfile();
                               await _loadUser();
                             },
                             text: "Modifier dans l'écran dédié",
@@ -181,7 +206,8 @@ class _ProfilePageState extends State<ProfilePage> {
                             textInputAction: TextInputAction.next,
                             validatorFunction: (v) {
                               if (v == null || v.trim().length < 3) {
-                                return "Le nom doit faire au moins 3 caractères";
+                                return "Le nom doit faire "
+                                    "au moins 3 caractères";
                               }
                               return null;
                             },
@@ -198,7 +224,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 return "L'adresse email est requise";
                               }
                               final emailRegex = RegExp(
-                                r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$",
+                                r"^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$",
                               );
                               if (!emailRegex.hasMatch(v.trim())) {
                                 return "Adresse email invalide";

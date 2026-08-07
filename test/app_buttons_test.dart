@@ -5,11 +5,14 @@ import "package:movify/presentation/widgets/app_outlined_button.dart";
 
 void main() {
   group("AppElevatedButton Widget Tests", () {
-    testWidgets("renders button text correctly", (tester) async {
+    testWidgets("renders button text correctly", (WidgetTester tester) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
-            body: AppElevatedButton(onPressed: () {}, text: "Valider"),
+            body: AppElevatedButton(
+              onPressed: () {},
+              text: "Valider",
+            ),
           ),
         ),
       );
@@ -17,8 +20,8 @@ void main() {
       expect(find.text("Valider"), findsOneWidget);
     });
 
-    testWidgets("triggers onPressed callback when tapped", (tester) async {
-      var tapped = false;
+    testWidgets("triggers onPressed callback when tapped", (WidgetTester tester) async {
+      bool tapped = false;
 
       await tester.pumpWidget(
         MaterialApp(
@@ -39,9 +42,7 @@ void main() {
       expect(tapped, isTrue);
     });
 
-    testWidgets("shows CircularProgressIndicator when isLoading is true", (
-      tester,
-    ) async {
+    testWidgets("shows CircularProgressIndicator when isLoading is true", (WidgetTester tester) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -59,11 +60,14 @@ void main() {
   });
 
   group("AppOutlinedButton Widget Tests", () {
-    testWidgets("renders outlined button text correctly", (tester) async {
+    testWidgets("renders outlined button text correctly", (WidgetTester tester) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
-            body: AppOutlinedButton(onPressed: () {}, text: "Annuler"),
+            body: AppOutlinedButton(
+              onPressed: () {},
+              text: "Annuler",
+            ),
           ),
         ),
       );

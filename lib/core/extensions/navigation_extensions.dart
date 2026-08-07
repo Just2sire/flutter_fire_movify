@@ -28,6 +28,7 @@ extension NavigationExtensions on BuildContext {
 
   /// Navigation vers le profil
   void goToProfile() => go(AppRoutes.profile);
+  void pushToEditProfile() => go(AppRoutes.editProfile);
 
   /// Navigation vers la page d'erreur
   void goToError() => go(AppRoutes.error);

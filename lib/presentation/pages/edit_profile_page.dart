@@ -67,17 +67,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    final isMobile = context.isMobile;
-
     return AppScaffold(
       resizeToAvoidBottomInset: true,
       body: Column(
         children: [
-          AppTopbar(
-            title: "Éditer le Profil",
-            showLeading: true,
-            onPop: () => context.pop(),
-          ),
+          AppTopbar(title: "Éditer le Profil", onPop: () => context.pop()),
           AppSpacing.gapVMd,
           Expanded(
             child: _isLoading
@@ -97,7 +91,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             textCapitalization: TextCapitalization.words,
                             validatorFunction: (value) {
                               if (value == null || value.trim().length < 3) {
-                                return "Le nom doit contenir au moins 3 caractères";
+                                return "Le nom doit contenir au moins"
+                                    " 3 caractères";
                               }
                               return null;
                             },
@@ -113,10 +108,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
                                 return "L'adresse email est requise";
                               }
                               final emailRegex = RegExp(
-                                r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$",
+                                r"^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$",
                               );
                               if (!emailRegex.hasMatch(value.trim())) {
-                                return "Veuillez entrer une adresse email valide";
+                                return "Veuillez entrer une "
+                                    "adresse email valide";
                               }
                               return null;
                             },
@@ -133,7 +129,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                               }
                               final phoneRegex = RegExp(r"^\+?[0-9\s\-]{8,}$");
                               if (!phoneRegex.hasMatch(value.trim())) {
-                                return "Format de téléphone invalide (min. 8 chiffres)";
+                                return "Format de téléphone invalide "
+                                    "(min. 8 chiffres)";
                               }
                               return null;
                             },

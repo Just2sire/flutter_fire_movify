@@ -8,6 +8,7 @@ class AppRoutes {
   static String movies = "/movies";
   static String favourites = "/favourite";
   static String profile = "/profile";
+  static String editProfile = "/edit/profile";
   static String watchlist = "/watchlist";
 
   //

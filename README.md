@@ -12,13 +12,14 @@
 
 Le projet intègre une suite rigoureuse de **tests automatisés** couvrant à la fois la couche domaine, la couche de données (parsing/sérialisation), les composants UI réutilisables du Design System et la validation des formulaires.
 
-### 📊 Découpage des Tests (`test/`)
-- 🟢 **`test/unit/duration_formatter_test.dart`** : Tests unitaires de l'extension de formattage des durées (0min, minutes seules, heures exactes, complétion avec zéros).
-- 🟢 **`test/unit/movie_model_test.dart`** : Tests unitaires du modèle `MovieModel` (parsing JSON `fromMap`, conversion `toEntity`, sérialisation `toMap`).
-- 🟢 **`test/widget/app_buttons_test.dart`** : Tests de widgets UI pour `AppElevatedButton` et `AppOutlinedButton` (rendu texte, déclenchement `onPressed`, état de chargement `isLoading`).
-- 🟢 **`test/widget/app_text_form_field_test.dart`** : Tests de widgets UI pour `AppTextFormField` (saisie de texte, gestion des labels, validation automatique `isRequired`).
-- 🟢 **`test/widget/edit_profile_page_test.dart`** : Test d'intégration de l'écran d'édition de profil ([`EditProfilePage`](file:///C:/Users/Desire/Documents/FORMATION/FlutterFire/FLUTTER/movify/lib/presentation/pages/edit_profile_page.dart)) vérifiant la présence des **3 champs de formulaire** et l'exécution de la validation.
-- 🟢 **`test/widget_test.dart`** : Test du composant réutilisable [`AppTopbar`](file:///C:/Users/Desire/Documents/FORMATION/FlutterFire/FLUTTER/movify/lib/presentation/widgets/app_topbar.dart).
+### 📊 Découpage des Tests à la Racine de `test/`
+- 🟢 **[`test/duration_formatter_test.dart`](file:///C:/Users/Desire/Documents/FORMATION/FlutterFire/FLUTTER/movify/test/duration_formatter_test.dart)** : Tests unitaires du formateur de durée (`int.toFormattedDuration()`).
+- 🟢 **[`test/movie_model_test.dart`](file:///C:/Users/Desire/Documents/FORMATION/FlutterFire/FLUTTER/movify/test/movie_model_test.dart)** : Tests unitaires du modèle `MovieModel` (`fromMap`, `toEntity`, `toMap`).
+- 🟢 **[`test/theme_repository_test.dart`](file:///C:/Users/Desire/Documents/FORMATION/FlutterFire/FLUTTER/movify/test/theme_repository_test.dart)** : Tests unitaires de la persistance locale du Thème Clair/Sombre (`ThemeRepositoryImpl` & `SharedPreferences`).
+- 🟢 **[`test/app_buttons_test.dart`](file:///C:/Users/Desire/Documents/FORMATION/FlutterFire/FLUTTER/movify/test/app_buttons_test.dart)** : Tests de widgets pour `AppElevatedButton` et `AppOutlinedButton` (rendu, clics, `isLoading`).
+- 🟢 **[`test/app_text_form_field_test.dart`](file:///C:/Users/Desire/Documents/FORMATION/FlutterFire/FLUTTER/movify/test/app_text_form_field_test.dart)** : Tests de widgets pour `AppTextFormField` (saisie de texte, validation `isRequired`).
+- 🟢 **[`test/edit_profile_page_test.dart`](file:///C:/Users/Desire/Documents/FORMATION/FlutterFire/FLUTTER/movify/test/edit_profile_page_test.dart)** : Test d'intégration de [`EditProfilePage`](file:///C:/Users/Desire/Documents/FORMATION/FlutterFire/FLUTTER/movify/lib/presentation/pages/edit_profile_page.dart) (validation des **3 champs de formulaire**).
+- 🟢 **[`test/widget_test.dart`](file:///C:/Users/Desire/Documents/FORMATION/FlutterFire/FLUTTER/movify/test/widget_test.dart)** : Test du composant réutilisable [`AppTopbar`](file:///C:/Users/Desire/Documents/FORMATION/FlutterFire/FLUTTER/movify/lib/presentation/widgets/app_topbar.dart).
 
 ```bash
 # Pour exécuter tous les tests :
